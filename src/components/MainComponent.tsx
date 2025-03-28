@@ -184,7 +184,7 @@ const handleSelectPokemon = (pokemonName: string) => {
         setShinyFormBtn(SparkleFilled);
       }
     }
-  }, [isShiny]);
+  }, [isShiny, pokemon]);
 
   useEffect(() => {
     if (!localData || Object.keys(localData).length === 0) {
