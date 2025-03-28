@@ -192,7 +192,8 @@ function capitalizeAndRemoveHyphens(str: string) {
 
           <section className='lg:pe-10 xl:pe-20 xl:border-r-2 border-black w-full bg-gray-600'>
 
-            <div className='bg-white bg-opacity-50 flex w-[100%] h-16 sm:h-14 items-center rounded-lg px-2'>
+            <div className='flex justify-center items-center w-full max-w-2xl'>
+            <div className='bg-white bg-opacity-50 flex w-full max-w-md h-16 sm:h-14 items-center rounded-lg px-2'>
               <input
                 value={input} 
                 onChange={(e) => setInput(e.target.value)}
@@ -219,6 +220,10 @@ function capitalizeAndRemoveHyphens(str: string) {
                 />
               </button>
             </div>
+
+            </div>
+
+
 
             <div className='flex flex-col items-center'>
 
@@ -258,7 +263,7 @@ function capitalizeAndRemoveHyphens(str: string) {
                   width={200}
                   height={200}
                   unoptimized
-                  className='max-w-full h-auto'
+                  className='w-full max-w-xs h-auto object-contain rounded-lg'
                 />
               </div>
             </div>
