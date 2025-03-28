@@ -2,7 +2,7 @@
 
 **Description:** Create a single page pokemon application using the Pokemon API and Next.JS / TypeScript
 
-![Design preview for Pokemon App Rebuild]()
+![Design preview for Pokemon App Rebuild](./src/assets/ScreenshotPoke.png)
 
 ***Here are the requirements that are needed:***
 - Built in Next.JS / TypeScript 
@@ -31,11 +31,11 @@
 
 ## Link(s):
 
-[Original Figma]()
+[Original Figma](https://www.figma.com/design/LTpU7YtFvvQuylzyliqyDY/Untitled?node-id=0-1&t=ivOgk45xUIBGCYcp-1)
 
 [Github-Repo](https://github.com/mkheck13/rebuildpokemon)
 
-[Vercel]()
+[Vercel](https://rebuildpokemon-o8nj.vercel.app/)
 
 ## FeedBack/Peer Review: 
 
