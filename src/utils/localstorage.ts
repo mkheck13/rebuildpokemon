@@ -1,6 +1,6 @@
 const saveToLocalStorage = (pokemon: string) => {
     if (typeof window === 'undefined') return;
-    let favorites = getLocalStorage();
+    const favorites = getLocalStorage();
     if(!favorites.includes(pokemon)){
         favorites.push(pokemon);
     }
@@ -8,7 +8,7 @@ const saveToLocalStorage = (pokemon: string) => {
 };
 const getLocalStorage = () => {
     if (typeof window === 'undefined') return [];
-    let localStorageData = localStorage.getItem("Favorites");
+    const localStorageData = localStorage.getItem("Favorites");
     if(localStorageData == null){
         return [];
     }
@@ -16,8 +16,8 @@ const getLocalStorage = () => {
 };
 const removeFromLocalStorage = (pokemon: string) => {
     if (typeof window === 'undefined') return;
-    let favorites = getLocalStorage();
-    let namedIndex = favorites.indexOf(pokemon);
+    const favorites = getLocalStorage();
+    const namedIndex = favorites.indexOf(pokemon);
     favorites.splice(namedIndex, 1);
     localStorage.setItem("Favorites", JSON.stringify(favorites));
 };

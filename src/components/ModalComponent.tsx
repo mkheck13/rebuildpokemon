@@ -27,7 +27,8 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ onSelectPokemon }) => {
     <>
       <Button
         onClick={() => setOpenModal(true)}
-        className="bg-gray-800 h-16 w-72 rounded-lg flex justify-center items-center"
+        className="h-16 w-72  flex justify-center items-center focus:ring-0"
+        color="gray"
       >
         <p className="text-white montserrat font-semibold text-2xl pe-3">See Favorites</p>
         <Image

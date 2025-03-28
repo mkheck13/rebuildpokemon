@@ -37,7 +37,7 @@ const MainComponent = () => {
   const [favoriteHeartBtn, setFavoriteHeartBtn] = useState(HeartEmpty);
 
   const handleSearchClick = async () => {
-    let validInput = input.toString().trim();
+    const validInput = input.toString().trim();
 
     if (!isNaN(Number(validInput))) {
       const pokemonId = parseInt(validInput, 10);
@@ -63,7 +63,7 @@ const MainComponent = () => {
         } else {
           alert("Pokémon not found. Please check the name and try again.");
         }
-      } catch (error) {
+      } finally {
         alert("Error fetching Pokémon data. Please try again.");
       }
     }
@@ -151,11 +151,11 @@ const handleSelectPokemon = (pokemonName: string) => {
     }
 
     if (pokemon) {
-      let pokeTypesArr = pokemon.types;
-      let pokeTypes = pokeTypesArr.map(element => element.type.name);
+      const pokeTypesArr = pokemon.types;
+      const pokeTypes = pokeTypesArr.map(element => element.type.name);
       setTypes(pokeTypes.map(capitalizeFirstLetter).join(", "));
 
-      let pokeAbilitiesArr = pokemon.abilities;
+      const pokeAbilitiesArr = pokemon.abilities;
       const pokeAbilities = pokeAbilitiesArr.map(element => capitalizeFirstLetter(element.ability.name));
       setAbilities(pokeAbilities.join(", "));
 
@@ -188,11 +188,11 @@ const handleSelectPokemon = (pokemonName: string) => {
 
   useEffect(() => {
     if (!localData || Object.keys(localData).length === 0) {
-      setLocation("N/a");
+      setLocation("N/A");
     } else if (localData[0]?.location_area) {
       setLocation(capitalizeAndRemoveHyphens(localData[0].location_area.name));
     } else {
-      setLocation("N/a");
+      setLocation("N/A");
     }
   }, [localData]);
 
@@ -212,7 +212,7 @@ const handleSelectPokemon = (pokemonName: string) => {
       traverseEvolutions(evoData.chain);
       setEvolution(evolutionArr.map(capitalizeFirstLetter).join(' - '))
     } else {
-      setEvolution("N/a");
+      setEvolution("N/A");
     }
   }, [evoData]);
 

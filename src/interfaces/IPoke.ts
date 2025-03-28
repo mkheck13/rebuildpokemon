@@ -1,5 +1,4 @@
 // Interface to house the structure for my Pokemon
-
 export interface IPoke {
     abilities:                Ability[];
     base_experience:          number;
@@ -14,13 +13,23 @@ export interface IPoke {
     moves:                    Move[];
     name:                     string;
     order:                    number;
-    past_abilities:           any[];
-    past_types:               any[];
+    past_abilities:           PastAbility[];
+    past_types:               PastType[];
     species:                  Species;
     sprites:                  Sprites;
     stats:                    Stat[];
     types:                    Type[];
     weight:                   number;
+}
+
+export interface PastAbility {
+    abilities: Ability[];
+    generation: Species;
+}
+
+export interface PastType {
+    generation: Species;
+    types: Type[];
 }
 
 export interface Ability {

@@ -31,7 +31,7 @@
 
 ## Link(s):
 
-[Figma]()
+[Original Figma]()
 
 [Github-Repo](https://github.com/mkheck13/rebuildpokemon)
 

@@ -7,8 +7,10 @@ export interface IEvo {
 }
 
 export interface Chain {
-    evolution_details: any[];
-    evolves_to:        any[];
+    evolution_details: Array<{
+        [key: string]: any;
+    }>;
+    evolves_to:        Chain[];
     is_baby:           boolean;
     species:           Species;
 }
