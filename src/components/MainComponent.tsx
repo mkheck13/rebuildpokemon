@@ -22,7 +22,7 @@ const MainComponent = () => {
   const [pokemon, setPokemon] = useState<IPoke>();
   const [input, setInput] = useState<string | number>('');
   const [searchItem, setSearchItem] = useState<string | number>(1);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState<string | null>(null);
   const [isShiny, setIsShiny] = useState(false);
   const [shinyFormBtn, setShinyFormBtn] = useState(Sparkle);
   const [types, setTypes] = useState('');
@@ -253,8 +253,11 @@ function capitalizeAndRemoveHyphens(str: string) {
 
               <div className='flex justify-center items-center py-5 w-full'>
                 <Image
-                  src={image}
+                  src={image || bulba}
                   alt={'pokemon image'}
+                  width={200}
+                  height={200}
+                  unoptimized
                   className='max-w-full h-auto'
                 />
               </div>

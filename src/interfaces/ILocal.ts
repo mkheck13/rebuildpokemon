@@ -1,4 +1,4 @@
-// Interface to house our location structure
+// Interface to house my location structure
 
 export interface ILocalArray {
     [index: number]: ILocal;
