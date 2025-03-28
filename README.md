@@ -39,6 +39,9 @@
 
 ## FeedBack/Peer Review: 
 
-**Reviewer:** (Name Here)
+**Reviewer:** Thao Vang
 
-**Comments:** (Comments Here)
+**Comments:** finally causes alert even when the fetch is working. when typing in a string search that returns error, 
+for some reason creates multiple alerts, it doesnt do it for when you type in an incorrect number. everything else seems to be working
+well. just some small things you can do: add hover:cursor-pointer to buttons so you know what is pressable. if you really want to take on the
+challenge you can try to remove the hypthens just to make it a bit more aestetically pleasing. responsiveness works.
