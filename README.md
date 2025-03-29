@@ -42,6 +42,8 @@
 **Reviewer:** Thao Vang
 
 **Comments:** finally causes alert even when the fetch is working. when typing in a string search that returns error, 
-for some reason creates multiple alerts, it doesnt do it for when you type in an incorrect number. everything else seems to be working
+for some reason creates multiple alerts, it doesn't do it for when you type in an incorrect number. everything else seems to be working
 well. just some small things you can do: add hover:cursor-pointer to buttons so you know what is pressable. if you really want to take on the
-challenge you can try to remove the hypthens just to make it a bit more aestetically pleasing. responsiveness works.
+challenge you can try to remove the hyphens just to make it a bit more aesthetically pleasing. responsiveness works.
+
+**Update:** Fixed the finally issue by making it into a catch with an extra error message. Added the hover to buttons so it's easier to tell what is a button. Added the ability to look up certain pokemon without having to use hyphens, "Thundurus" instead of "Thundurus-incarnate"

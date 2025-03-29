@@ -37,11 +37,30 @@ const MainComponent = () => {
   const [favoriteHeartBtn, setFavoriteHeartBtn] = useState(HeartEmpty);
 
   const handleSearchClick = async () => {
-    const validInput = input.toString().trim();
-
+    let validInput = input.toString().trim().toLowerCase();
+  
+    const specialCases: { [key: string]: string } = {
+      deoxys: "386",
+      wormadam: "413",
+      shaymin: "492",
+      giratina: "487",
+      rotom: "479",
+      basculin: "550",
+      darmanitan: "555",
+      meloetta: "648",
+      tornadus: "641",
+      thundurus: "642",
+      landorus: "645",
+      keldeo: "647",
+    };
+  
+    if (specialCases[validInput]) {
+      validInput = specialCases[validInput];
+    }
+  
     if (!isNaN(Number(validInput))) {
       const pokemonId = parseInt(validInput, 10);
-
+  
       if (pokemonId >= 1 && pokemonId <= 649) {
         setSearchItem(pokemonId);
       } else {
@@ -49,12 +68,12 @@ const MainComponent = () => {
       }
     } else {
       try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${validInput.toLowerCase()}`);
-
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${validInput}`);
+  
         if (response.ok) {
           const data = await response.json();
           const pokemonId = data.id;
-
+  
           if (pokemonId >= 1 && pokemonId <= 649) {
             setSearchItem(pokemonId);
           } else {
@@ -63,12 +82,15 @@ const MainComponent = () => {
         } else {
           alert("Pokémon not found. Please check the name and try again.");
         }
-      } finally {
+      } catch (error) {
+        console.error("Error fetching Pokémon data:", error);
         alert("Error fetching Pokémon data. Please try again.");
       }
     }
-    setInput('');
+  
+    setInput("");
   };
+  
 
   const handleSearchKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -104,27 +126,27 @@ const MainComponent = () => {
 
   useEffect(() => {
     const getData = async () => {
-        const pokeData = await GetData(searchItem);
-        setPokemon(pokeData);
+      const pokeData = await GetData(searchItem);
+      setPokemon(pokeData);
 
-        if (pokeData.id === 143) {
-            setImage(superchunk.src);
+      if (pokeData.id === 143) {
+        setImage(superchunk.src);
+      } else {
+        const pokemonImage = pokeData.sprites?.other?.['official-artwork']?.front_default;
+
+        if (pokemonImage) {
+          setImage(pokemonImage);
         } else {
-            const pokemonImage = pokeData.sprites?.other?.['official-artwork']?.front_default;
-
-            if (pokemonImage) {
-                setImage(pokemonImage);
-            } else {
-                setImage(null);
-            }
+          setImage(null);
         }
+      }
     };
     getData();
-}, [searchItem]);
+  }, [searchItem]);
 
-const handleSelectPokemon = (pokemonName: string) => {
-  setSearchItem(pokemonName.toLowerCase()); // Use lowercase to avoid case-sensitive issues
-};
+  const handleSelectPokemon = (pokemonName: string) => {
+    setSearchItem(pokemonName.toLowerCase()); // Use lowercase to avoid case-sensitive issues
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -248,7 +270,7 @@ const handleSelectPokemon = (pokemonName: string) => {
                   placeholder='Pokémon name/ number'
                   className='text-xl font-medium border-none w-full flex-1 px-2 bg-transparent focus:outline-none'
                 />
-                <button className='flex items-center justify-center p-2' onClick={handleSearchClick}>
+                <button className='flex items-center justify-center p-2 hover:cursor-pointer' onClick={handleSearchClick}>
                   <Image
                     src={search}
                     alt={'search icon'}
@@ -257,7 +279,7 @@ const handleSelectPokemon = (pokemonName: string) => {
                     className='h-6 w-6 object-contain'
                   />
                 </button>
-                <button className='flex items-center justify-center p-2 ml-1' onClick={handleRandomClick}>
+                <button className='flex items-center justify-center p-2 ml-1 hover:cursor-pointer' onClick={handleRandomClick}>
                   <Image
                     src={random}
                     alt={'random icon'}
@@ -271,7 +293,7 @@ const handleSelectPokemon = (pokemonName: string) => {
 
             <div className='flex flex-col items-center'>
               <div className='flex items-center space-x-2 sm:space-x-4'>
-                <button className='flex-shrink-0' onClick={handleFavoriteClick}>
+                <button className='flex-shrink-0 hover:cursor-pointer' onClick={handleFavoriteClick}>
                   <Image
                     src={favoriteHeartBtn}
                     alt={'heart Icon'}
@@ -288,7 +310,7 @@ const handleSelectPokemon = (pokemonName: string) => {
                   </p>
                 </div>
 
-                <button className='flex-shrink-0' onClick={handleShinyClick}>
+                <button className='flex-shrink-0 hover:cursor-pointer' onClick={handleShinyClick}>
                   <Image
                     src={shinyFormBtn}
                     alt={'favorite Icon'}
@@ -316,7 +338,7 @@ const handleSelectPokemon = (pokemonName: string) => {
         <aside className='w-full lg:w-[55%] lg:ps-5 xl:ps-16 pt-16 lg:pt-0'>
 
           <div className='flex justify-center lg:justify-end pt-6'>
-            <ModalComponent onSelectPokemon={handleSelectPokemon}/>
+            <ModalComponent onSelectPokemon={handleSelectPokemon} />
 
           </div>
 

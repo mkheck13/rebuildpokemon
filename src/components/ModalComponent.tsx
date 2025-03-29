@@ -27,7 +27,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ onSelectPokemon }) => {
     <>
       <Button
         onClick={() => setOpenModal(true)}
-        className="h-16 w-72  flex justify-center items-center focus:ring-0"
+        className="h-16 w-72  flex justify-center items-center focus:ring-0 hover:cursor-pointer"
         color="gray"
       >
         <p className="text-white montserrat font-semibold text-2xl pe-3">See Favorites</p>
@@ -53,7 +53,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ onSelectPokemon }) => {
                     onSelectPokemon(fav);
                     setOpenModal(false);
                   }}
-                  className="block w-full text-left p-2 text-blue-600 hover:underline"
+                  className="block w-full text-left p-2 text-blue-600 hover:underline hover:cursor-pointer"
                 >
                   {capitalizeFirstLetter(fav)}
                 </button>
